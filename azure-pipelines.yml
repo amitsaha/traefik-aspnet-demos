@@ -35,12 +35,12 @@ steps:
 - task: PowerShell@2
   inputs:    
     targetType: 'inline'
-    script: 'docker login --username=amitsaha --password=$(dockerhubPassword)' 
+    script: 'docker login --username=amitsaha --password="$(dockerhubPassword)"' 
     errorActionPreference: 'stop'
     workingDirectory:  AspNetFrameworkDemo
 
 - task: PowerShell@2
-  inputs:    
+  inputs:
     targetType: 'inline'
     script: 'docker push amitsaha/aspnetframework-demo' 
     errorActionPreference: 'stop'
