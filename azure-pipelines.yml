@@ -36,8 +36,7 @@ steps:
   inputs:    
     targetType: 'inline'
     script: 'docker login --username=amitsaha --password="$(dockerhubPassword)"' 
-    errorActionPreference: 'stop'
-    workingDirectory:  AspNetFrameworkDemo
+    errorActionPreference: 'stop'    
 
 - task: PowerShell@2
   inputs:
@@ -46,3 +45,8 @@ steps:
     errorActionPreference: 'stop'
     workingDirectory:  AspNetFrameworkDemo
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'docker logout' 
+    errorActionPreference: 'stop'   
