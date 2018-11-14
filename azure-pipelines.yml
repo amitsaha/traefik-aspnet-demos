@@ -25,5 +25,4 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- script: docker version
-- script: docker build -t amitsaha/aspnetframework-demo . 
+- script: cd AspNetFrameworkDemo ; docker build -t amitsaha/aspnetframework-demo -f Dockerfile.basic .
