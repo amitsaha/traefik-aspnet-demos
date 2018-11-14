@@ -25,6 +25,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- powershell:  docker build -t amitsaha/aspnetframework-demo -f Dockerfile.basic .
-  workingDirectory:  AspNetFrameworkDemo
-  displayName:  Build Docker Image
+- task: PowerShell@2
+  inputs:    
+    script: 'docker build -t amitsaha/aspnetframework-demo -f Dockerfile.basic .' 
+    errorActionPreference: 'stop'    
+    workingDirectory:  AspNetFrameworkDemo
