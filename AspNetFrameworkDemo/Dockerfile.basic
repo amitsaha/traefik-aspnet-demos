@@ -1,9 +1,8 @@
-FROM microsoft/iis
-
+FROM microsoft/aspnet:4.7.2-windowsservercore-ltsc2016
 RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 WORKDIR /inetpub/wwwroot
 COPY AspNetFrameworkDemo .
 #  This configuration section cannot be used at this path. This happens when the section is locked at a parent level. Locking is either by default
 #  overrideModeDefault="Deny"), or set explicitly by a location tag with overrideMode="Deny" or the legacy allowOverride="false".
-RUN powershell -NoProfile -Command C:\Windows\System32\inetsrv\appcmd.exe unlock config /section:system.webServer/handlers
-RUN powershell -NoProfile -Command C:\Windows\System32\inetsrv\appcmd.exe unlock config /section:system.webServer/modules
+# RUN powershell -NoProfile -Command C:\Windows\System32\inetsrv\appcmd.exe unlock config /section:system.webServer/handlers
+# RUN powershell -NoProfile -Command C:\Windows\System32\inetsrv\appcmd.exe unlock config /section:system.webServer/modules
