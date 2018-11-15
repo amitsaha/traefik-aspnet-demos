@@ -4,4 +4,4 @@ RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 WORKDIR /inetpub/wwwroot
 COPY AspNetFrameworkDemo .
 
-RUN powershell -Command ls
+RUN powershell -NoProfile -Command C:\Windows\System32\inetsrv\appcmd.exe unlock config /section:system.webServer/serverRuntime
