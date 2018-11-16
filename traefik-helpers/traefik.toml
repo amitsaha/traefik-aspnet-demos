@@ -1,0 +1,17 @@
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      certFile = ".\\ssl_certs\\site1.echorand.me.cert"
+      keyFile = ".\\ssl_certs\\site1.echorand.me.key"      
+
+[file]
+  filename = ".\\rules.toml"
+  watch = true
