@@ -27,7 +27,9 @@ Remove-Item $NssmHome\nssm.zip
 
 # Install Traefik as a service
 $nssm = "$NssmHome\win64\nssm.exe"
-& $nssm install traefik "$TraefikHome\traefik.exe" start -c "$TraefikHome\traefik.toml"
+& $nssm set traefik Application "$TraefikHome\traefik.exe"
+& $nssm set traefik AppDirectory $TraefikHome
+& $nssm set traefik AppParameters -c ".\traefik.toml"
 
 mkdir C:\log
 & $nssm set traefik AppStdout C:\log\traefik-stdout.log
