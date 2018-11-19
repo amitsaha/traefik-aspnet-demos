@@ -9,7 +9,10 @@ if (-Not (Test-Path $TraefikHome)) {
     mkdir $TraefikHome
 }
 
-Invoke-WebRequest "https://github.com/containous/traefik/releases/download/$TraefikRelease/traefik_windows-amd64.exe" -OutFile "$TraefikHome\traefik.exe"
+if (-Not (Test-Path "$TraefikHome\traefik.exe"))
+{
+    Invoke-WebRequest "https://github.com/containous/traefik/releases/download/$TraefikRelease/traefik_windows-amd64.exe" -OutFile "$TraefikHome\traefik.exe"
+}
 Copy-Item traefik-helpers\traefik.toml $TraefikHome\
 
 
@@ -20,16 +23,19 @@ if (-Not (Test-Path $NssmHome)) {
 }
 
 $NssmRelease = "2.24"
-Invoke-WebRequest "https://nssm.cc/release/nssm-$NssmRelease.zip" -OutFile "$NssmHome\nssm.zip"
-Expand-Archive -LiteralPath "$NssmHome\nssm.zip" -DestinationPath $NssmHome
-Remove-Item $NssmHome\nssm.zip
+if (-Not (Test-Path "$NssmHome\nssm.zip"))
+{
+    Invoke-WebRequest "https://nssm.cc/release/nssm-$NssmRelease.zip" -OutFile "$NssmHome\nssm.zip"
+    Expand-Archive -LiteralPath "$NssmHome\nssm.zip" -DestinationPath $NssmHome
+    Remove-Item $NssmHome\nssm.zip
+}
 
 
 # Install Traefik as a service
-$nssm = "$NssmHome\win64\nssm.exe"
-& $nssm set traefik Application "$TraefikHome\traefik.exe"
+$nssm = "$NssmHome\nssm-$NssmRelease\win64\nssm.exe"
+& $nssm install traefik "$TraefikHome\traefik.exe"
 & $nssm set traefik AppDirectory $TraefikHome
-& $nssm set traefik AppParameters -c ".\traefik.toml"
+& $nssm set traefik AppParameters  -c ".\traefik.toml"
 
 mkdir C:\log
 & $nssm set traefik AppStdout C:\log\traefik-stdout.log
