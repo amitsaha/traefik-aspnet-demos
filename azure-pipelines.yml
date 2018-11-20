@@ -7,7 +7,7 @@ pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
-  solution: 'AspNetFrameworkDemo/AspNetFrameworkDemo.sln'
+  solution: 'demo1/AspNetFrameworkDemo/AspNetFrameworkDemo.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -30,7 +30,7 @@ steps:
     targetType: 'inline'
     script: 'docker build -t amitsaha/aspnetframework-demo -f Dockerfile.basic .' 
     errorActionPreference: 'stop'    
-    workingDirectory:  AspNetFrameworkDemo
+    workingDirectory:  'demo1/AspNetFrameworkDemo'
 
 - task: PowerShell@2
   inputs:    
@@ -43,7 +43,7 @@ steps:
     targetType: 'inline'
     script: 'docker push amitsaha/aspnetframework-demo' 
     errorActionPreference: 'stop'
-    workingDirectory:  AspNetFrameworkDemo
+    workingDirectory:  'demo1/AspNetFrameworkDemo'
 
 - task: PowerShell@2
   inputs:
