@@ -28,7 +28,7 @@ steps:
 - task: PowerShell@2
   inputs:    
     targetType: 'inline'
-    script: 'docker build -t amitsaha/aspnetframework-demo -f Dockerfile.basic .' 
+    script: 'docker build -t amitsaha/aspnetframework-demo .' 
     errorActionPreference: 'stop'    
     workingDirectory:  'demo1/AspNetFrameworkDemo'
 
