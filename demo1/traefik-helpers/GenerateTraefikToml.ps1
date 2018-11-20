@@ -1,7 +1,5 @@
 $template=Get-Content "C:\traefik\rules.toml.template" -Encoding UTF8 -Raw
-
-
-$site1=docker ps --filter "health=healthy" --filter "label=app=amitsaha/apsnetframwork-demon" --filter "label=version=${NewImageTag}" --format '{{.ID}}'
+$site1=docker ps --filter "health=healthy" --filter "label=app=apsnetframwork-demo" --format '{{.ID}}'
 if ($site1)
 {
     $siteIP=docker inspect $site1 --format '{{ .NetworkSettings.Networks.nat.IPAddress}}'

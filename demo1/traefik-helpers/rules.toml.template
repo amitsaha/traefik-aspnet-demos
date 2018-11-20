@@ -1,11 +1,11 @@
 [frontends]
-  [frontends.site1]
-  backend = "site1"
-  [frontends.site1.routes.site1]
-  rule = "Host: site1.echorand.me"
+  [frontends.default]
+  backend = "default"
+  [frontends.default.routes.default]
+  rule = "Host: aspnetframeworkdemo.echorand.me"
 
   
 [backends]
-  [backends.site1]
-    [backends.site1.servers.server1]
-    url = "http://${site1}"
+  [backends.default]
+    [backends.default.servers.server1]
+    url = "http://${siteIP}"
