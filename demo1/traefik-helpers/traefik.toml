@@ -7,10 +7,15 @@ defaultEntryPoints = ["http", "https"]
     entryPoint = "https"
   [entryPoints.https]
   address = ":443"
-    [entryPoints.https.tls]
-      [[entryPoints.https.tls.certificates]]
-      certFile = ".\\ssl_certs\\site1.echorand.me.cert"
-      keyFile = ".\\ssl_certs\\site1.echorand.me.key"      
+  [entryPoints.https.tls]
+
+[acme]
+email = "amitsaha.in@example.com"
+storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"
 
 [file]
   filename = ".\\rules.toml"
