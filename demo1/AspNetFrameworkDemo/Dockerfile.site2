@@ -1,4 +1,4 @@
 FROM microsoft/aspnet:4.7.2-windowsservercore-ltsc2016
 RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 WORKDIR /inetpub/wwwroot
-COPY AspNetFrameworkDemo .
+COPY site2 .
