@@ -1,11 +1,21 @@
 [frontends]
-  [frontends.default]
-  backend = "default"
-  [frontends.default.routes.default]
-  rule = "Host: aspnetframeworkdemo.echorand.me"
+  [frontends.api]
+  backend = "api"
+  [frontends.api.routes.default]
+  rule = "Host: api.example.com"
 
-  
 [backends]
-  [backends.default]
-    [backends.default.servers.server1]
-    url = "http://${siteIP}"
+  [backends.api]
+    [backends.api.servers.server1]
+    url = "http://${apiIP}"
+
+[frontends]
+  [frontends.admin]
+  backend = "admin"
+  [frontends.admin.routes.default]
+  rule = "Host: admin.example.com"
+
+[backends]
+  [backends.admin]
+    [backends.admin.servers.server1]
+    url = "http://${adminIP}"
