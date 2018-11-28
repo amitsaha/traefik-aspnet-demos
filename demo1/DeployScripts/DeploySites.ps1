@@ -3,15 +3,13 @@ param(
 )
 
 # Deploy the new version
-
-$ApplicationName = "aspnetframework-demo-site1"
 $Image1="amitsaha/aspnetframework-demo-site1"
 docker run `
       --label "traefik.backend=site1" `
       --label "traefik.frontend.rule=Host:site1.echorand.me"  `
       --label "traefik.port=80" `
-      --label "app=${ApplicationName}" `
-      --label "version=$GitHash" -d "$Image1:$GitHash"
+      --label "app=${Image1}" `
+      --label "version=$GitHash" -d "$($Image1):$($GitHash)"
 
 $ApplicationName = "aspnetframework-demo-site2"
 $Image2="amitsaha/aspnetframework-demo-site2"
@@ -19,10 +17,10 @@ docker run `
       --label "traefik.backend=site2" `
       --label "traefik.frontend.rule=Host:site2.echorand.me"  `
       --label "traefik.port=80" `
-      --label "app=${ApplicationName}" `
-      --label "version=$GitHash" -d "$Image2:$GitHash"
+      --label "app=${Image2}" `
+      --label "version=$GitHash" -d "$($Image2):$($GitHash)"
 
-# Wait for a new container to become healthy and kill the old one
+# For each image, wait for a new container to become healthy and kill the old one
 $images=@($Image1, $Image2)
 foreach ($image in $images)
 {
@@ -31,7 +29,7 @@ foreach ($image in $images)
 
     while ($health -ne 'healthy') {        
       $health=docker inspect --format '{{ .State.Health.Status }}' $container
-      Start-Sleep -s 20s
+      Start-Sleep -s 20
     }
     $OldContainer=docker ps --filter "label=app=${image}" --filter before=$container --format '{{.ID}}'
     if ($OldContainer)
