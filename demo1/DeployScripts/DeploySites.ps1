@@ -8,6 +8,7 @@ docker run `
       --label "traefik.backend=site1" `
       --label "traefik.frontend.rule=Host:site1.echorand.me"  `
       --label "traefik.port=80" `
+      --label "traefik.backend.healthcheck.path=/" `
       --label "app=${Image1}" `
       --label "version=$GitHash" -d "$($Image1):$($GitHash)"
 
@@ -17,6 +18,7 @@ docker run `
       --label "traefik.backend=site2" `
       --label "traefik.frontend.rule=Host:site2.echorand.me"  `
       --label "traefik.port=80" `
+      --label "traefik.backend.healthcheck.path=/" `
       --label "app=${Image2}" `
       --label "version=$GitHash" -d "$($Image2):$($GitHash)"
 
