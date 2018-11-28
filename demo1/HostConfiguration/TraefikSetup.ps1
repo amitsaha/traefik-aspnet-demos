@@ -1,6 +1,5 @@
 param(
-     [string]$TraefikTomlPath,
-     [string]$TraefikRulesTemplateTomlPath
+     [string]$TraefikTomlPath     
 )
 # Example invocation:
 # .\TraefikSetup.ps1 -TraefikTomlPath C:\data\traefik\traefik.toml -RulesTemplateTomlPath C:\data\traefik\rules.toml.template
@@ -14,9 +13,6 @@ if (-Not (Test-Path $TraefikTomlPath)) {
     throw "$TraefikTomlPath not found"
 }
 
-if (-Not (Test-Path $TraefikRulesTemplateTomlPath)) {
-    throw "$TraefikRulesTemplateTomlPath not found"
-}
 
 # Use TLS 1.2
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -32,7 +28,6 @@ if (-Not (Test-Path "$TraefikHome\traefik.exe"))
 }
 
 Copy-Item $TraefikTomlPath $TraefikHome\traefik.toml -force
-Copy-Item $TraefikRulesTemplateTomlPath $TraefikHome\rules.toml.template -force
 
 # Download NSSM
 if (-Not (Test-Path $NssmHome)) {

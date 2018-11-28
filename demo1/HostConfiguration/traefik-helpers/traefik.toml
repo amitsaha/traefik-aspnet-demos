@@ -19,6 +19,6 @@ onHostRule = true
 [acme.httpChallenge]
 entryPoint = "http"
 
-[file]
-  filename = ".\\rules.toml"
-  watch = true
+[docker] 
+watch = true  
+endpoint = "npipe:////./pipe/docker_engine"
