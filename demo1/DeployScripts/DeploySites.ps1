@@ -40,7 +40,7 @@ foreach ($image in $images)
     {
           Write-Output "Shutting down $image"
           docker exec $OldContainer powershell -Command Stop-WebAppPool -Name "DefaultAppPool"
-          Start-Sleep -s 20
+          Start-Sleep -s 30
           docker rm -f $OldContainer
     }
 }
