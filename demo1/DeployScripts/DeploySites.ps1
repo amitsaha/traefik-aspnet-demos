@@ -9,6 +9,7 @@ docker run `
       --label "traefik.frontend.rule=Host:site1.echorand.me"  `
       --label "traefik.port=80" `
       --label "traefik.backend.healthcheck.path=/" `
+      --label "traefik.backend.healthcheck.interval=5s" `
       --label "app=${Image1}" `
       --label "version=$GitHash" -d "$($Image1):$($GitHash)"
 
@@ -19,6 +20,7 @@ docker run `
       --label "traefik.frontend.rule=Host:site2.echorand.me"  `
       --label "traefik.port=80" `
       --label "traefik.backend.healthcheck.path=/" `
+      --label "traefik.backend.healthcheck.interval=5s" `
       --label "app=${Image2}" `
       --label "version=$GitHash" -d "$($Image2):$($GitHash)"
 
@@ -31,14 +33,14 @@ foreach ($image in $images)
 
     while ($health -ne 'healthy') {        
       $health=docker inspect --format '{{ .State.Health.Status }}' $container
-      Start-Sleep -s 20
+      Start-Sleep -s 10
     }
     $OldContainer=docker ps --filter "label=app=${image}" --filter before=$container --format '{{.ID}}'
     if ($OldContainer)
     {
           Write-Output "Shutting down $image"
           docker exec $OldContainer powershell -Command Stop-WebAppPool -Name "DefaultAppPool"
-          Start-Sleep -s 30
+          Start-Sleep -s 20
           docker rm -f $OldContainer
     }
 }
