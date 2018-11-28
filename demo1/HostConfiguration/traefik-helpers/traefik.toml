@@ -12,7 +12,7 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.https.tls]
 
 [acme]
-email = "amitsaha.in@example.com"
+email = "amitsaha.in@gmail.com"
 storage = "acme.json"
 entryPoint = "https"
 onHostRule = true
@@ -20,5 +20,7 @@ onHostRule = true
 entryPoint = "http"
 
 [docker] 
-watch = true  
+watch = true
+# https://docs.microsoft.com/en-us/windows/desktop/ipc/pipe-names
+# https://github.com/moby/moby/blob/8e610b2b55bfd1bfa9436ab110d311f5e8a74dcb/client/client_windows.go#L7
 endpoint = "npipe:////./pipe/docker_engine"
