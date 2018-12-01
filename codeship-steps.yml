@@ -1,11 +1,4 @@
 - name: Test 
   tag: master
-  command: docker version
-- name: Test 1
-  tag: master
   service: app
-  command: docker ps
-- name: Test 2
-  tag: master
-  service: app
-  command: docker images
+  command: curl localhost:5000
