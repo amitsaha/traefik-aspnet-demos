@@ -1,4 +1,4 @@
 - name: Test 
   tag: master
   service: app
-  command: curl localhost:5000
+  command: curl localhost
