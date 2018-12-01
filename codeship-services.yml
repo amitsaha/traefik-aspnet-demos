@@ -3,5 +3,3 @@ app:
     image: amitsaha/aspnetcore-demo
     context: demo2
     dockerfile: Dockerfile
-    args:
-      build_env: production
