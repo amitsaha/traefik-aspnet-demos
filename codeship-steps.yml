@@ -1,6 +1,5 @@
 - name: Test 
   tag: master
-  service: app
   command: docker version
 - name: Test 1
   tag: master
