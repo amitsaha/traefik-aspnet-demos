@@ -2,4 +2,7 @@
   command: docker run -d amitsaha/aspnetcore-demo
 
 - service: hostdocker
+  command: docker run -d amitsaha/aspnetcore-demo
+
+- service: hostdocker
   command: docker ps
