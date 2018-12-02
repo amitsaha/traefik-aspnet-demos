@@ -1,4 +1,4 @@
-app:
+myapp:
   build:
     image: amitsaha/aspnetcore-demo
     context: demo2
