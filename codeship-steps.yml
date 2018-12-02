@@ -1,2 +1,2 @@
 - service: app
-  command: true
+  command: echo "Hello world"

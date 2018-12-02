@@ -13,4 +13,4 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 RUN ls .
 # Assembly name is the same as the project name
-ENTRYPOINT ["dotnet", "demo2.dll"]
+# ENTRYPOINT ["dotnet", "demo2.dll"]
