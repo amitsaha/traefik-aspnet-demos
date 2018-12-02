@@ -3,3 +3,6 @@ app:
     image: amitsaha/aspnetcore-demo
     context: demo2
     dockerfile: Dockerfile
+adddocker:
+  image: docker:stable-dind
+  add_docker: true

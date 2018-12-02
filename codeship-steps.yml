@@ -1,2 +1,5 @@
-- service: app
-  command: echo "Hello world"
+- service: addocker
+  command: docker run -d amitsaha/aspnetcore-demo
+
+- service: addocker
+  command: docker ps
