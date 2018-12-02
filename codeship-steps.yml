@@ -1,8 +1,2 @@
 - service: hostdocker
-  command: docker images
-
-- service: hostdocker
-  command: docker run -d amitsaha/aspnetcore-demo
-
-- service: hostdocker
-  command: docker ps
+  command: bash run-tests.sh
