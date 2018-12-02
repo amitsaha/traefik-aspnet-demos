@@ -1,5 +1,5 @@
 - service: hostdocker
-  command: docker run -d amitsaha/aspnetcore-demo
+  command: docker images
 
 - service: hostdocker
   command: docker run -d amitsaha/aspnetcore-demo
