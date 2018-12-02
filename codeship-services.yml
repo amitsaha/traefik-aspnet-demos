@@ -6,4 +6,4 @@ app:
 hostdocker:
   image: docker:stable-dind
   add_docker: true
-  depends_on: app
+  depends_on: ["app"]
