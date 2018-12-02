@@ -3,7 +3,6 @@ myapp:
     image: amitsaha/aspnetcore-demo
     context: demo2
     dockerfile: Dockerfile
-hostdocker:
-  image: docker:stable-dind
-  add_docker: true
+curl:
+  image: pstauffer/curl:latest
   depends_on: ["myapp"]

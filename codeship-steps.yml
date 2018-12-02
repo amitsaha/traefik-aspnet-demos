@@ -1,2 +1,2 @@
-- service: hostdocker
+- service: curl
   command: curl myapp
