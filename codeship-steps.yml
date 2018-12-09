@@ -1,2 +1,2 @@
 - service: curl
-  command: curl myapp
+  command: curl -I http://myapp
