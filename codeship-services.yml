@@ -1,7 +1,7 @@
 myapp:
   build:
     image: amitsaha/aspnetcore-demo
-    context: demo2
+    context: demo2/WebApplication
     dockerfile: Dockerfile
 curl:
   image: pstauffer/curl:latest
