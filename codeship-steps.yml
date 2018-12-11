@@ -1,2 +1,7 @@
 - service: curl
   command: curl -I http://myapp
+
+- service: myapp
+  type: push
+  image_name: amitsaha/aspnetcore-demo
+  encrypted_dockercfg_path: dockercfg.encrypted
