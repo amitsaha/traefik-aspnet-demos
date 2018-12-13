@@ -13,11 +13,11 @@ defaultEntryPoints = ["http", "https"]
 
 [acme]
 email = "amitsaha.in@gmail.com"
-storage = "acme.json"
+storage = "/acme.json"
 entryPoint = "https"
 onHostRule = true
 [acme.httpChallenge]
 entryPoint = "http"
 
 [docker]
-watch=true
+watch = true
