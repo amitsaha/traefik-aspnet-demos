@@ -20,3 +20,4 @@ onHostRule = true
 entryPoint = "http"
 
 [docker]
+watch=true
